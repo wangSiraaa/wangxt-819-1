@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { Room, Deposit } from '../types'
+import type { Room, Deposit, Equipment } from '../types'
 import { storage } from '../utils/storage'
 
 interface AdminPanelProps {
@@ -20,7 +20,7 @@ export default function AdminPanel({ rooms, deposits, onRoomsChange, onDepositsC
       if (room.id === selectedRoom) {
         return {
           ...room,
-          equipments: room.equipments.map(eq => {
+          equipments: room.equipments.map((eq: Equipment) => {
             if (eq.id === equipmentId) {
               return {
                 ...eq,
@@ -43,7 +43,7 @@ export default function AdminPanel({ rooms, deposits, onRoomsChange, onDepositsC
       if (room.id === selectedRoom) {
         return {
           ...room,
-          equipments: room.equipments.map(eq => {
+          equipments: room.equipments.map((eq: Equipment) => {
             if (eq.id === equipmentId) {
               return { ...eq, faultDescription: description }
             }
@@ -184,7 +184,7 @@ export default function AdminPanel({ rooms, deposits, onRoomsChange, onDepositsC
                   </tr>
                 </thead>
                 <tbody>
-                  {currentRoom.equipments.map(eq => (
+                  {currentRoom.equipments.map((eq: Equipment) => (
                     <tr key={eq.id} className={eq.isFaulty ? 'faulty-row' : ''}>
                       <td>{eq.name}</td>
                       <td>{eq.category}</td>
