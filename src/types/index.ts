@@ -56,4 +56,12 @@ export interface FilterOptions {
   priceRange: [number, number] | null;
 }
 
+export type GroupBy = 'type' | 'capacity' | 'price';
+
+export interface RoomGroup {
+  id: string;
+  name: string;
+  rooms: Room[];
+}
+
 export type UserRole = 'member' | 'admin';

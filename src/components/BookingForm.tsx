@@ -42,7 +42,7 @@ export default function BookingForm({ room, timeSlot, date, onSubmit, onSaveDraf
     if (!canSubmit) return
     
     if (isGoldenHourBlocked) {
-      setError('黄金时段需缴纳押金后方可预约')
+      setError('预约失败：您尚未缴纳押金，黄金时段（18:00-22:00）仅限已缴纳押金的用户预约。请联系管理员缴纳押金。')
       return
     }
 
@@ -89,7 +89,13 @@ export default function BookingForm({ room, timeSlot, date, onSubmit, onSaveDraf
       {isGoldenHourBlocked && (
         <div className="alert error">
           <span className="alert-icon">⚠️</span>
-          您尚未缴纳押金，无法预约黄金时段（18:00-22:00）
+          <div className="alert-content">
+            <p className="alert-title">无法预约黄金时段</p>
+            <p className="alert-desc">
+              <strong>原因：</strong>您尚未缴纳押金。根据预约规则，黄金时段（每日18:00-22:00）仅限已缴纳押金的用户预约。
+              请联系场地管理员缴纳押金后再进行预约。
+            </p>
+          </div>
         </div>
       )}
 
@@ -142,6 +148,7 @@ export default function BookingForm({ room, timeSlot, date, onSubmit, onSaveDraf
           className="btn btn-primary"
           onClick={handleSubmit}
           disabled={!canSubmit || isGoldenHourBlocked}
+          title={isGoldenHourBlocked ? '请先缴纳押金后再预约黄金时段' : ''}
         >
           确认预约
         </button>

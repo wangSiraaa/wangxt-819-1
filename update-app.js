@@ -1,7 +1,11 @@
-import { useState, useEffect, useMemo } from 'react'
+const fs = require('fs');
+const path = require('path');
+
+const newAppContent = `import { useState, useEffect, useMemo } from 'react'
 import type { Room, TimeSlot, Booking, FilterOptions, Deposit, GroupBy } from './types'
 import { storage } from './utils/storage'
 import { generateTimeSlots } from './data/mockData'
+import RoomCard from './components/RoomCard'
 import RoomFilter from './components/RoomFilter'
 import TimeSlotSelector from './components/TimeSlotSelector'
 import BookingForm from './components/BookingForm'
@@ -326,3 +330,8 @@ function groupByPrice(rooms: Room[]) {
 }
 
 export default App
+`;
+
+const appPath = path.join(__dirname, 'src/App.tsx');
+fs.writeFileSync(appPath, newAppContent);
+console.log('Updated: src/App.tsx');
