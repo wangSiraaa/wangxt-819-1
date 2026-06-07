@@ -1,27 +1,14 @@
-# Local Trae preflight scaffolding
-.env
-.trae-preflight.json
-README.preflight.md
-scripts/smoke.sh
-scripts/smoke.ps1
+node_modules
+dist
+dist-ssr
+*.local
 
-# Common local runtime noise
+.vscode/*
+!.vscode/extensions.json
+.idea
 .DS_Store
-node_modules/
-.venv/
-venv/
-__pycache__/
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-target/
-build/
-dist/
-.next/
-.nuxt/
-coverage/
-*.log
-*.tmp
-*.sqlite
-*.sqlite3
-*.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

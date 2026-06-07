@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  rehearsal-booking:
+    build: .
+    ports:
+      - "8080:80"
+    container_name: rehearsal-booking-wall
+    restart: unless-stopped
